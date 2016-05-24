@@ -7,7 +7,7 @@ main() {
 
       var result = parser.parse("status playing");
 
-      expect(result, "playing");
+      expect(result.status, "playing");
     });
 
     test('should parse another status', () {
@@ -15,7 +15,7 @@ main() {
 
       var result = parser.parse("status pause");
 
-      expect(result, "pause");
+      expect(result.status, "pause");
     });
 
     test('should support multiple words status', () {
@@ -23,25 +23,45 @@ main() {
 
       var result = parser.parse("status playing loud");
 
-      expect(result, "playing loud");
+      expect(result.status, "playing loud");
+    });
+
+    test('should support status with title', () {
+      var parser = new Parser();
+
+      var result = parser.parse("status playing loud title Dance");
+
+      expect(result.status, "playing loud");
     });
   });
 
-  group('Title', (){
+  group('Title', () {
     test('should support title', () {
       var parser = new Parser();
 
       var result = parser.parse("status playing title Dancing with the stars");
 
-      // expect(result, "Dancing with the stars");
+      // expect(result.title, "Dancing with the stars");
     });
   });
 }
 
 class Parser {
-  String parse(String metadata) {
+  List<String> keys = ['status', 'title'];
+  Metadata parse(String metadata) {
+    var result = new Metadata();
     var splitedMetadata = metadata.split(" ");
-    var result = splitedMetadata..removeAt(0);
-    return result.join(" ");
+    String lastFound = null;
+    for (var part in splitedMetadata) {
+      if (keys.contains(part)) {
+
+      }
+    }
+    return result;
   }
+}
+
+class Metadata {
+  String status;
+  String title;
 }
