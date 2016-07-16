@@ -1,4 +1,5 @@
 import 'package:test/test.dart';
+import 'package:cmustify/src/parser.dart';
 
 main() {
   group('Status', () {
@@ -7,15 +8,7 @@ main() {
 
       var result = parser.parse("status playing");
 
-      expect(result.status, "playing");
-    });
-
-    test('should parse another status', () {
-      var parser = new Parser();
-
-      var result = parser.parse("status pause");
-
-      expect(result.status, "pause");
+      expect(result.getTagValue("status"), "playing");
     });
 
     test('should support multiple words status', () {
@@ -23,7 +16,7 @@ main() {
 
       var result = parser.parse("status playing loud");
 
-      expect(result.status, "playing loud");
+      expect(result.getTagValue("status"), "playing loud");
     });
 
     test('should support status with title', () {
@@ -31,7 +24,7 @@ main() {
 
       var result = parser.parse("status playing loud title Dance");
 
-      expect(result.status, "playing loud");
+      expect(result.getTagValue("status"), "playing loud");
     });
   });
 
@@ -39,29 +32,27 @@ main() {
     test('should support title', () {
       var parser = new Parser();
 
+      var result = parser.parse("title Dancing with the stars");
+
+      expect(result.getTagValue("title"), "Dancing with the stars");
+    });
+    test('should support multiple words title', () {
+      var parser = new Parser();
+
       var result = parser.parse("status playing title Dancing with the stars");
 
-      // expect(result.title, "Dancing with the stars");
+      expect(result.getTagValue("title"), "Dancing with the stars");
+    });
+  });
+  group('Album', () {
+    test('should support Album', () {
+      var parser = new Parser();
+
+      var result = parser
+          .parse("status playing title Dancing with the stars album Best hits");
+
+      expect(result.getTagValue("album"), "Best hits");
     });
   });
 }
 
-class Parser {
-  List<String> keys = ['status', 'title'];
-  Metadata parse(String metadata) {
-    var result = new Metadata();
-    var splitedMetadata = metadata.split(" ");
-    String lastFound = null;
-    for (var part in splitedMetadata) {
-      if (keys.contains(part)) {
-
-      }
-    }
-    return result;
-  }
-}
-
-class Metadata {
-  String status;
-  String title;
-}
