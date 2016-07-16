@@ -1,4 +1,5 @@
 import 'package:test/test.dart';
+import 'package:cmustify/src/parser.dart';
 
 main() {
   group('Status', () {
@@ -8,14 +9,6 @@ main() {
       var result = parser.parse("status playing");
 
       expect(result.getKeyValue("status"), "playing");
-    });
-
-    test('should parse another status', () {
-      var parser = new Parser();
-
-      var result = parser.parse("status pause");
-
-      expect(result.getKeyValue("status"), "pause");
     });
 
     test('should support multiple words status', () {
@@ -51,42 +44,15 @@ main() {
       expect(result.getKeyValue("title"), "Dancing with the stars");
     });
   });
+  group('Album', () {
+    test('should support Album', () {
+      var parser = new Parser();
+
+      var result = parser
+          .parse("status playing title Dancing with the stars album Best hits");
+
+      expect(result.getKeyValue("album"), "Best hits");
+    });
+  });
 }
 
-class Parser {
-  final String breakKey = "!break!";
-  List<String> keys = ['status', 'title', "!break!"];
-
-  Metadata parse(String metadata) {
-    var result = new Metadata();
-    var splitedMetadata = metadata.split(" ");
-    splitedMetadata.add(breakKey);
-    String lastFound = null;
-    List<String> valueCollector = [];
-    for (var part in splitedMetadata) {
-      if (keys.contains(part)) {
-        if (valueCollector.length > 0) {
-          String joinedValue = valueCollector.join(" ");
-          result.setKeyValue(lastFound, joinedValue);
-          valueCollector.clear();
-        }
-        lastFound = part;
-        continue;
-      }
-      valueCollector.add(part);
-    }
-    return result;
-  }
-}
-
-class Metadata {
-  Map<String, String> values = {};
-
-  setKeyValue(String key, String value) {
-    this.values[key] = value;
-  }
-
-  String getKeyValue(String key) {
-    return this.values[key];
-  }
-}
