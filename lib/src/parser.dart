@@ -1,8 +1,8 @@
 import 'package:cmustify/src/metadata.dart';
 
 class Parser {
-  final String breakKey = "!break!";
-  final List<String> validKeys = [
+  final String breakTag = "!break!";
+  final List<String> validTags = [
     'status',
     'url',
     'file',
@@ -17,16 +17,16 @@ class Parser {
   ];
 
   Metadata parse(String cmusMetadata) {
-    var result = new Metadata();
+    final result = new Metadata();
     var splitedMetadata = cmusMetadata.split(" ");
-    splitedMetadata.add(breakKey);
+    splitedMetadata.add(breakTag);
     String lastFound = null;
     List<String> valueCollector = [];
-    for (var part in splitedMetadata) {
-      if (validKeys.contains(part)) {
+    for (final part in splitedMetadata) {
+      if (validTags.contains(part)) {
         if (valueCollector.length > 0) {
           String joinedValue = valueCollector.join(" ");
-          result.setKeyValue(lastFound, joinedValue);
+          result.setTagValue(lastFound, joinedValue);
           valueCollector.clear();
         }
         lastFound = part;

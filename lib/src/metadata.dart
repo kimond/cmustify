@@ -1,11 +1,11 @@
 class Metadata {
-  Map<String, String> values = {};
+  Map<String, String> values = <String, String>{};
 
-  setKeyValue(String key, String value) {
-    this.values[key] = value;
+  setTagValue(String tag, String value) {
+    this.values[tag] = value;
   }
 
-  String getKeyValue(String key) {
-    return this.values[key];
+  String getTagValue(String tag) {
+    return this.values[tag];
   }
 }

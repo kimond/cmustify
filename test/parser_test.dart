@@ -8,7 +8,7 @@ main() {
 
       var result = parser.parse("status playing");
 
-      expect(result.getKeyValue("status"), "playing");
+      expect(result.getTagValue("status"), "playing");
     });
 
     test('should support multiple words status', () {
@@ -16,7 +16,7 @@ main() {
 
       var result = parser.parse("status playing loud");
 
-      expect(result.getKeyValue("status"), "playing loud");
+      expect(result.getTagValue("status"), "playing loud");
     });
 
     test('should support status with title', () {
@@ -24,7 +24,7 @@ main() {
 
       var result = parser.parse("status playing loud title Dance");
 
-      expect(result.getKeyValue("status"), "playing loud");
+      expect(result.getTagValue("status"), "playing loud");
     });
   });
 
@@ -34,14 +34,14 @@ main() {
 
       var result = parser.parse("title Dancing with the stars");
 
-      expect(result.getKeyValue("title"), "Dancing with the stars");
+      expect(result.getTagValue("title"), "Dancing with the stars");
     });
     test('should support multiple words title', () {
       var parser = new Parser();
 
       var result = parser.parse("status playing title Dancing with the stars");
 
-      expect(result.getKeyValue("title"), "Dancing with the stars");
+      expect(result.getTagValue("title"), "Dancing with the stars");
     });
   });
   group('Album', () {
@@ -51,7 +51,7 @@ main() {
       var result = parser
           .parse("status playing title Dancing with the stars album Best hits");
 
-      expect(result.getKeyValue("album"), "Best hits");
+      expect(result.getTagValue("album"), "Best hits");
     });
   });
 }
