@@ -1,23 +1,25 @@
 import 'package:test/test.dart';
 import 'dart:io';
+import 'dart:async';
 
 main() {
   group("Notify", () {
     test("Should send notification", () async {
-      var notifySender = new NotifySend();
-      var result = await notifySender.sendNotification("sum", "test");
-      expect(result, 0);
+      final notifySender = new NotifySend();
+      final result = await notifySender.sendNotification("sum", "test");
     });
   });
 }
 
+abstract class Notifier {
+  Future<Null> sendNotification(String summary, String content);
+}
 
-class NotifySend {
-  sendNotification(String summary, String content) async {
-    List<String> arguments = [];
+class NotifySend extends Notifier {
+  Future<Null> sendNotification(String summary, String content) async {
+    List<String> arguments = <String>[];
     arguments.add(summary);
     arguments.add(content);
-    Process process = await Process.start("notify-send", arguments);
-    return process.exitCode;
+    await Process.start("notify-send", arguments);
   }
 }
