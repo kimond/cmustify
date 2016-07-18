@@ -1,15 +1,5 @@
-import 'package:test/test.dart';
-import 'dart:io';
 import 'dart:async';
-
-main() {
-  group("Notify", () {
-    test("Should send notification", () async {
-      final notifySender = new NotifySend();
-      final result = await notifySender.sendNotification("sum", "test");
-    });
-  });
-}
+import 'dart:io';
 
 abstract class Notifier {
   Future<Null> sendNotification(String summary, String content);
