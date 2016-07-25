@@ -1,25 +1,21 @@
 import 'package:cmustify/src/metadata.dart';
 
 class MessageFormatter {
-  var metaData;
-
-  setMetaData(Metadata metaData) {
-    this.metaData = metaData;
-  }
-
-  String getMessage() {
+  String formatMessage(Metadata metaData) {
     var notificationBody;
-    if (this.metaData.getTagValue('title') != null) {
-      notificationBody = this.metaData.getTagValue('title');
+    if (metaData.getTagValue('title') != null) {
+      notificationBody = metaData.getTagValue('title');
     } else {
       notificationBody = "Unknown";
     }
 
-    if (this.metaData.getTagValue('artist') != null) {
-      notificationBody += " by " + this.metaData.getTagValue('artist');
+    if (metaData.getTagValue('artist') != null) {
+      final String artist = metaData.getTagValue('artist');
+      notificationBody += " by $artist";
 
-      if (this.metaData.getTagValue('album') != null) {
-        notificationBody += ", " + this.metaData.getTagValue('album');
+      if (metaData.getTagValue('album') != null) {
+        final String album = metaData.getTagValue('album');
+        notificationBody += ", $album";
       }
     }
 
