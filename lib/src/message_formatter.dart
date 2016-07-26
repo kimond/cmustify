@@ -2,7 +2,7 @@ import 'package:cmustify/src/metadata.dart';
 
 class MessageFormatter {
   String formatMessage(Metadata metaData) {
-    var notificationBody;
+    String notificationBody;
     if (metaData.getTagValue('title') != null) {
       notificationBody = metaData.getTagValue('title');
     } else {
