@@ -9,16 +9,14 @@ class Cmustify {
   NotifySend notifySend;
 
   Cmustify() {
-    this.parser = new Parser();
-    this.messageFormatter = new MessageFormatter();
-    this.notifySend = new NotifySend();
+    parser = new Parser();
+    messageFormatter = new MessageFormatter();
+    notifySend = new NotifySend();
   }
 
   void handleData(String cmusData) {
-    final Metadata metaData = this.parser.parse(cmusData);
-    final notificationMessage = this.messageFormatter.formatMessage(metaData);
-    this
-        .notifySend
-        .sendNotification("Cmustify - Current song", notificationMessage);
+    final Metadata metaData = parser.parse(cmusData);
+    final notificationMessage = messageFormatter.formatMessage(metaData);
+    notifySend.sendNotification("Cmustify - Current song", notificationMessage);
   }
 }
