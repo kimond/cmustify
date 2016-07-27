@@ -1,5 +1,6 @@
 name: cmustify
 version: 0.0.1
+author: Kim Desrosiers <kimdesro@gmail.com>
 homepage: https://github.com/Pacane/cmustify
 description: A cmus utility that show notifications with the current playing song information.
 executables:
