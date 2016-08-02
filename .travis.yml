@@ -5,3 +5,12 @@ dart:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libnotify-bin
+
+script:
+  - pub run dart_dev format --check
+  - pub run dart_dev analyze
+  - pub run dart_dev test -j 2
+
+after_success:
+  - pub run dart_dev coverage --no-open
+  - bash <(curl -s https://codecov.io/bash) -f  coverage/coverage.lcov

@@ -5,5 +5,9 @@ homepage: https://github.com/Pacane/cmustify
 description: A cmus utility that show notifications with the current playing song information.
 executables:
   cmustify:
-dependencies:
+dev_dependencies:
   test: '>=0.12.13+4 <0.13.0'
+  coverage: "^0.7.3"
+  dart_dev: "^1.0.0"
+  dart_style: ">=0.1.8 <0.3.0"
+  dartdoc: "^0.4.0"
