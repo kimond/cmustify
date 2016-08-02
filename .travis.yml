@@ -12,5 +12,5 @@ script:
   - pub run dart_dev test -j 2
 
 after_success:
-  - pub run dart_dev coverage --no-open
+  - pub run dart_dev coverage --no-html --no-open
   - bash <(curl -s https://codecov.io/bash) -f  coverage/coverage.lcov
