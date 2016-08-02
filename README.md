@@ -1,4 +1,6 @@
 # cmustify
+[![Build Status](https://travis-ci.org/kimond/cmustify.svg?branch=master)](https://travis-ci.org/kimond/cmustify)
+
 What is cmustify? This is a cmus notifier that shows the current song into notifications.
 
 This is a rewrite in Dart for fun of https://github.com/kimond/cmustify
