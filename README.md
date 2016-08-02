@@ -1,5 +1,6 @@
 # cmustify
 [![Build Status](https://travis-ci.org/kimond/cmustify.svg?branch=master)](https://travis-ci.org/kimond/cmustify)
+[![codecov](https://codecov.io/gh/kimond/cmustify/branch/master/graph/badge.svg)](https://codecov.io/gh/kimond/cmustify)
 
 What is cmustify? This is a cmus notifier that shows the current song into notifications.
 
