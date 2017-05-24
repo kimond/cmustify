@@ -4,7 +4,7 @@
 
 What is cmustify? This is a cmus notifier that shows the current song into notifications.
 
-This is a rewrite in Dart for fun of https://github.com/kimond/cmustify
+This is a rewrite in Dart for fun of https://github.com/kimond/pycmustify
 
 
 ## Install
