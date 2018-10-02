@@ -1,13 +1,10 @@
 name: cmustify
-version: 0.0.2
+version: 0.1.0
 author: Kim Desrosiers <kimdesro@gmail.com>
-homepage: https://github.com/Pacane/cmustify
-description: A cmus utility that show notifications with the current playing song information.
+homepage: https://github.com/kimond/cmustify
+description: A cmus utility that shows notifications with the current playing song information.
 executables:
   cmustify:
 dev_dependencies:
-  test: '>=0.12.13+4 <0.13.0'
-  coverage: "^0.7.3"
-  dart_dev: "^1.0.0"
-  dart_style: ">=0.1.8 <0.3.0"
-  dartdoc: "^0.4.0"
+  test: "1.3.3"
+  coverage: "^0.12.2"

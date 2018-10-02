@@ -6,7 +6,6 @@ linter:
     - camel_case_types
     - empty_constructor_bodies
     - always_declare_return_types
-#    - avoid_as
     - camel_case_types
     - constant_identifier_names
     - empty_constructor_bodies
@@ -22,7 +21,6 @@ linter:
     - super_goes_last
     - type_annotate_public_apis
     - type_init_formals
-    - unnecessary_brace_in_string_interp
     - unnecessary_getters_setters
     - avoid_empty_else
     - package_names

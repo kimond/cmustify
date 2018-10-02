@@ -24,7 +24,7 @@ class Parser {
     List<String> valueCollector = [];
     for (final part in splitedMetadata) {
       if (validTags.contains(part)) {
-        if (valueCollector.length > 0) {
+        if (valueCollector.isNotEmpty) {
           String joinedValue = valueCollector.join(" ");
           result.setTagValue(lastFound, joinedValue);
           valueCollector.clear();
